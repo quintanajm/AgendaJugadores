@@ -16,7 +16,7 @@ public class AgendaJugadores {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("AgendaJugadoresFutbolPU");
         Map<String, String> emfProperties = new HashMap<String, String>();
         emfProperties.put("javax.persistence.jdbc.url", "jdbc:derby:BDAgendaJugadores;create=true");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();   
         
         
         //        Clubes
@@ -58,9 +58,7 @@ public class AgendaJugadores {
         jugadorParejo.setDisponible(Boolean.TRUE);
         jugadorParejo.setClub(clubValencia);
 
-
-        
-
+       
         em.getTransaction().begin();
         em.persist(jugadorMessi);
         em.persist(jugadorRamos);

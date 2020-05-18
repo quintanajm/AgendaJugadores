@@ -33,6 +33,28 @@ public class ComprobarContenido {
             System.out.println(club.getNombre());
         }
 
+        Query queryJugadorMessi = em.createNamedQuery("Jugadores.findByNombre");
+        queryJugadorMessi.setParameter("nombre", "Lionel");
+        List<Jugadores> listJugadorMessi = queryJugadorMessi.getResultList();
+        for (Jugadores jugadorMessi : listJugadorMessi) {
+            System.out.print(jugadorMessi.getId() + ": ");
+            System.out.println(jugadorMessi.getNombre());
+        }
+        Jugadores jugadoresid10 = em.find(Jugadores.class, 10);
+        if (jugadoresid10 != null) {
+            System.out.print(jugadoresid10.getId() + ": ");
+            System.out.println(jugadoresid10.getNombre());
+        } else {
+            System.out.println("No hay ningún jugador con ID=10");
+        }
+
+//        eliminar objetos
+        if (jugadoresid10 != null) {
+            em.remove(jugadoresid10);
+        } else {
+            System.out.println("No hay ninguna jugador con ID=10");
+        }
+
         // Cerrar la conexión con la base de datos
         em.close();
         emf.close();
